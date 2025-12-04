@@ -366,9 +366,9 @@ const MedicalRecords = () => {
                 <CardTitle className="mobile-header">Filters</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="text-sm font-semibold mb-2 block">
+                    <label className="text-sm font-semibold mb-2 block mobile-text-fix">
                       Search Records
                     </label>
                     <div className="relative flex items-center border border-input rounded-md bg-background hover:border-primary/50 transition-colors focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary">
@@ -382,7 +382,7 @@ const MedicalRecords = () => {
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm font-semibold mb-2 block flex items-center gap-2">
+                    <label className="text-sm font-semibold mb-2 block flex items-center gap-2 mobile-text-fix">
                       <Filter className="w-4 h-4 text-primary" />
                       Record Type
                     </label>
@@ -400,7 +400,7 @@ const MedicalRecords = () => {
                     </select>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                <p className="text-sm text-muted-foreground flex items-center gap-2 mobile-text-fix">
                   <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/10 text-primary text-xs font-semibold">
                     {filteredRecords.length}
                   </span>
@@ -437,7 +437,7 @@ const MedicalRecords = () => {
                     {filteredRecords.map((record) => (
                       <div
                         key={record.id}
-                        className="p-4 rounded-lg border border-border/50 hover:bg-secondary/30 transition-colors"
+                        className="p-4 rounded-lg border border-border/50 hover:bg-secondary/30 transition-colors mobile-card-spacing"
                       >
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0 mt-1">
@@ -445,24 +445,24 @@ const MedicalRecords = () => {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <h3 className="font-semibold">{record.title}</h3>
+                              <h3 className="font-semibold mobile-header">{record.title}</h3>
                               {getRecordTypeBadge(record.type)}
                             </div>
-                            <p className="text-sm text-muted-foreground mb-2">
+                            <p className="text-sm text-muted-foreground mb-2 mobile-text-fix">
                               {record.description}
                             </p>
-                            <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                              <span className="flex items-center gap-1">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs text-muted-foreground">
+                              <span className="flex items-center gap-1 mobile-text-fix">
                                 <Calendar className="w-3 h-3" />
                                 {new Date(record.date).toLocaleDateString()}
                               </span>
-                              <span className="flex items-center gap-1">
+                              <span className="flex items-center gap-1 mobile-text-fix">
                                 <Stethoscope className="w-3 h-3" />
                                 {record.doctor}
                               </span>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-col sm:flex-row items-center gap-2">
                             <Button
                               variant="ghost"
                               size="sm"
@@ -487,44 +487,44 @@ const MedicalRecords = () => {
             </Card>
 
             {/* Record Statistics */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
-              <Card>
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+              <Card className="mobile-card-spacing">
                 <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">
+                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary mb-1 sm:mb-2 mobile-header">
                       {records.length}
                     </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">Total Records</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mobile-text-fix">Total Records</p>
                   </div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="mobile-card-spacing">
                 <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-2xl sm:text-3xl font-bold text-blue-500 mb-1 sm:mb-2">
+                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-500 mb-1 sm:mb-2 mobile-header">
                       {records.filter((r) => r.type === "lab_report").length}
                     </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">Lab Reports</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mobile-text-fix">Lab Reports</p>
                   </div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="mobile-card-spacing">
                 <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-2xl sm:text-3xl font-bold text-purple-500 mb-1 sm:mb-2">
+                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-purple-500 mb-1 sm:mb-2 mobile-header">
                       {records.filter((r) => r.type === "scan").length}
                     </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">Scans</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mobile-text-fix">Scans</p>
                   </div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="mobile-card-spacing">
                 <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-2xl sm:text-3xl font-bold text-green-500 mb-1 sm:mb-2">
+                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-500 mb-1 sm:mb-2 mobile-header">
                       {records.filter((r) => r.type === "prescription").length}
                     </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">Prescriptions</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mobile-text-fix">Prescriptions</p>
                   </div>
                 </CardContent>
               </Card>
