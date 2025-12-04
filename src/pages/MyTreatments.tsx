@@ -1232,16 +1232,16 @@ const MyTreatments = () => {
                                 </Button>
                               </DialogTrigger>
                               {selectedTreatmentId === treatment.id && (
-                                <DialogContent className="max-h-[75vh] overflow-y-auto">
-                                  <DialogHeader className="pb-1 sm:pb-2">
-                                    <DialogTitle className="text-sm sm:text-base">Add Medicine</DialogTitle>
-                                    <DialogDescription className="text-xs">
+                                <DialogContent className="max-w-[95vw] sm:max-w-md max-h-[85vh] overflow-y-auto mobile-content mobile-text-container">
+                                  <DialogHeader className="pb-3 sm:pb-4">
+                                    <DialogTitle className="text-base sm:text-lg mobile-header">Add Medicine</DialogTitle>
+                                    <DialogDescription className="text-sm mobile-text-fix">
                                       Add medicine to treatment
                                     </DialogDescription>
                                   </DialogHeader>
-                                  <div className="space-y-1.5 sm:space-y-2">
+                                  <div className="space-y-4 sm:space-y-5 mobile-text-container">
                                     <div>
-                                      <Label htmlFor="med-name" className="text-xs sm:text-sm">Medicine Name *</Label>
+                                      <Label htmlFor="med-name" className="text-sm font-medium block mb-2 mobile-text-fix">Medicine Name *</Label>
                                       <Input
                                         id="med-name"
                                         placeholder="e.g., Metformin"
@@ -1252,11 +1252,11 @@ const MyTreatments = () => {
                                             name: e.target.value,
                                           })
                                         }
-                                        className="h-8 sm:h-9 text-xs sm:text-sm"
+                                        className="h-11 sm:h-12 text-base mobile-text-fix"
                                       />
                                     </div>
                                     <div>
-                                      <Label htmlFor="med-dosage" className="text-xs sm:text-sm">Dosage *</Label>
+                                      <Label htmlFor="med-dosage" className="text-sm font-medium block mb-2 mobile-text-fix">Dosage *</Label>
                                       <Input
                                         id="med-dosage"
                                         placeholder="e.g., 500mg"
@@ -1267,11 +1267,11 @@ const MyTreatments = () => {
                                             dosage: e.target.value,
                                           })
                                         }
-                                        className="h-8 sm:h-9 text-xs sm:text-sm"
+                                        className="h-11 sm:h-12 text-base mobile-text-fix"
                                       />
                                     </div>
                                     <div>
-                                      <Label htmlFor="med-frequency" className="text-xs sm:text-sm">Frequency *</Label>
+                                      <Label htmlFor="med-frequency" className="text-sm font-medium block mb-2 mobile-text-fix">Frequency *</Label>
                                       <Select
                                         value={medicineForm.frequency}
                                         onValueChange={(value) =>
@@ -1281,8 +1281,8 @@ const MyTreatments = () => {
                                           })
                                         }
                                       >
-                                        <SelectTrigger id="med-frequency" className="h-8 sm:h-9 text-xs sm:text-sm">
-                                          <SelectValue placeholder="Select" />
+                                        <SelectTrigger id="med-frequency" className="h-11 sm:h-12 text-base mobile-text-fix">
+                                          <SelectValue placeholder="Select frequency" />
                                         </SelectTrigger>
                                         <SelectContent>
                                           <SelectItem value="Once daily">Once daily</SelectItem>
@@ -1295,10 +1295,10 @@ const MyTreatments = () => {
 
                                     {/* Times Management */}
                                     <div>
-                                      <Label className="text-xs sm:text-sm">Medicine Times *</Label>
-                                      <div className="space-y-1 mt-1">
+                                      <Label className="text-sm font-medium block mb-2 mobile-text-fix">Medicine Times *</Label>
+                                      <div className="space-y-2 mt-2">
                                         {medicineForm.times.map((time, index) => (
-                                          <div key={index} className="flex gap-1">
+                                          <div key={index} className="flex gap-2">
                                             <Input
                                               type="time"
                                               value={time}
@@ -1347,7 +1347,7 @@ const MyTreatments = () => {
                                     </div>
 
                                     <div>
-                                      <Label htmlFor="med-instructions" className="text-xs sm:text-sm">Instructions *</Label>
+                                      <Label htmlFor="med-instructions" className="text-sm font-medium block mb-2 mobile-text-fix">Instructions *</Label>
                                       <Select
                                         value={medicineForm.instructions}
                                         onValueChange={(value) =>
@@ -1357,7 +1357,7 @@ const MyTreatments = () => {
                                           })
                                         }
                                       >
-                                        <SelectTrigger id="med-instructions" className="h-8 sm:h-9 text-xs sm:text-sm">
+                                        <SelectTrigger id="med-instructions" className="h-11 sm:h-12 text-base mobile-text-fix">
                                           <SelectValue placeholder="Select" />
                                         </SelectTrigger>
                                         <SelectContent>
@@ -1368,7 +1368,7 @@ const MyTreatments = () => {
                                       </Select>
                                     </div>
                                     <div>
-                                      <Label htmlFor="med-stock" className="text-xs sm:text-sm">Stock (tablets)</Label>
+                                      <Label htmlFor="med-stock" className="text-sm font-medium block mb-2 mobile-text-fix">Stock (tablets)</Label>
                                       <Input
                                         id="med-stock"
                                         type="number"
@@ -1380,7 +1380,7 @@ const MyTreatments = () => {
                                             stock: e.target.value,
                                           })
                                         }
-                                        className="h-8 sm:h-9 text-xs sm:text-sm"
+                                        className="h-11 sm:h-12 text-base mobile-text-fix"
                                       />
                                     </div>
                                     <Button onClick={handleAddMedicine} disabled={loading} className="w-full h-11 text-base mt-4 gap-2">
