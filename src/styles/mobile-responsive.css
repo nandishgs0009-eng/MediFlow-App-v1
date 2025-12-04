@@ -480,6 +480,94 @@ textarea:focus-visible {
   }
 }
 
+/* ========================================
+   MOBILE APP CONVERSION OPTIMIZATIONS
+   ======================================== */
+
+/* Prevent zoom on input focus (critical for mobile apps) */
+input, textarea, select {
+  font-size: 16px !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Mobile app specific modal styling */
+@media (max-width: 768px) {
+  /* Full screen modal behavior for mobile apps */
+  [data-radix-dialog-overlay] {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(4px);
+  }
+  
+  [role="dialog"] {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    margin: 2.5vh auto !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  /* Add Treatment Modal specific */
+  [role="dialog"][aria-labelledby*="treatment"] {
+    padding: 0 !important;
+  }
+  
+  /* Modal content scrolling */
+  [role="dialog"] > div {
+    max-height: calc(90vh - 2rem) !important;
+    overflow-y: auto !important;
+    padding: 1.5rem !important;
+  }
+  
+  /* Form elements mobile app styling */
+  .mobile-content input,
+  .mobile-content textarea,
+  .mobile-content select {
+    border-radius: 0.75rem !important;
+    border-width: 1px !important;
+    padding: 1rem !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    min-height: 48px !important;
+    touch-action: manipulation;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  
+  /* Button touch optimization for mobile apps */
+  .mobile-content button {
+    min-height: 48px !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 0.75rem !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Text optimization for mobile apps */
+  .mobile-header {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+  }
+  
+  .mobile-text-fix {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    color: hsl(var(--foreground)) !important;
+  }
+}
+
 /* Dashboard Progress Circle Mobile Optimization */
 @media (max-width: 768px) {
   /* Progress circle container */
