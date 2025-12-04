@@ -406,6 +406,80 @@ textarea:focus-visible {
   margin-top: 1rem;
 }
 
+/* Add New Treatment Modal Mobile Optimization */
+@media (max-width: 768px) {
+  /* Treatment modal specific styling */
+  .treatment-modal {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    margin: 1rem;
+    max-height: 85vh !important;
+    overflow-y: auto;
+  }
+  
+  /* Modal header spacing */
+  .treatment-modal-header {
+    padding: 1rem 1rem 0.5rem 1rem;
+    border-bottom: 1px solid hsl(var(--border));
+    margin-bottom: 1rem;
+  }
+  
+  /* Modal content spacing */
+  .treatment-modal-content {
+    padding: 1rem;
+    max-height: calc(85vh - 8rem);
+    overflow-y: auto;
+  }
+  
+  /* Treatment form inputs */
+  .treatment-form input[type="text"],
+  .treatment-form textarea,
+  .treatment-form select {
+    width: 100% !important;
+    font-size: 16px !important;
+    padding: 0.875rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+  
+  /* Treatment form textarea specific */
+  .treatment-form textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: inherit;
+  }
+  
+  /* Treatment form labels */
+  .treatment-form label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: hsl(var(--foreground));
+  }
+  
+  /* Treatment form action buttons */
+  .treatment-modal-footer {
+    padding: 1rem;
+    border-top: 1px solid hsl(var(--border));
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  
+  .treatment-modal-footer button {
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+}
+
 /* Dashboard Progress Circle Mobile Optimization */
 @media (max-width: 768px) {
   /* Progress circle container */

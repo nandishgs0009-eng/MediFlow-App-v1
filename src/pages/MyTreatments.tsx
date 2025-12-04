@@ -45,6 +45,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
+import "@/styles/mobile-responsive.css";
 
 interface Medicine {
   id: string;
@@ -834,7 +835,7 @@ const MyTreatments = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-4 sm:p-6 md:p-8">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8 mobile-content mobile-text-container max-w-full overflow-hidden">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="text-center">
@@ -1431,16 +1432,16 @@ const MyTreatments = () => {
                           Start New Treatment
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-[95vw] sm:max-w-md max-h-[90vh] overflow-y-auto">
+                      <DialogContent className="max-w-[95vw] sm:max-w-md max-h-[90vh] overflow-y-auto mobile-content mobile-text-container">
                         <DialogHeader className="pb-3 sm:pb-4">
-                          <DialogTitle className="text-base sm:text-lg">Add New Treatment</DialogTitle>
-                          <DialogDescription className="text-sm">
+                          <DialogTitle className="text-base sm:text-lg mobile-header">Add New Treatment</DialogTitle>
+                          <DialogDescription className="text-sm mobile-text-fix">
                             Create a new treatment plan
                           </DialogDescription>
                         </DialogHeader>
-                        <div className="space-y-4 sm:space-y-5">
+                        <div className="space-y-4 sm:space-y-5 mobile-text-container">
                           <div>
-                            <Label htmlFor="name" className="text-sm font-medium block mb-2">Treatment Name *</Label>
+                            <Label htmlFor="name" className="text-sm font-medium block mb-2 mobile-text-fix">Treatment Name *</Label>
                             <Input
                               id="name"
                               placeholder="e.g., Diabetes Management"
@@ -1448,11 +1449,11 @@ const MyTreatments = () => {
                               onChange={(e) =>
                                 setTreatmentForm({ ...treatmentForm, name: e.target.value })
                               }
-                              className="h-11 sm:h-12 text-base"
+                              className="h-11 sm:h-12 text-base mobile-text-fix"
                             />
                           </div>
                           <div>
-                            <Label htmlFor="description" className="text-sm font-medium block mb-2">Description</Label>
+                            <Label htmlFor="description" className="text-sm font-medium block mb-2 mobile-text-fix">Description</Label>
                             <Textarea
                               id="description"
                               placeholder="Treatment details and purpose"
@@ -1460,12 +1461,12 @@ const MyTreatments = () => {
                               onChange={(e) =>
                                 setTreatmentForm({ ...treatmentForm, description: e.target.value })
                               }
-                              className="h-24 sm:h-28 text-base resize-none"
+                              className="h-24 sm:h-28 text-base resize-none mobile-text-fix"
                             />
                           </div>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div>
-                              <Label htmlFor="start_date" className="text-sm font-medium block mb-2">Start Date *</Label>
+                              <Label htmlFor="start_date" className="text-sm font-medium block mb-2 mobile-text-fix">Start Date *</Label>
                               <Input
                                 id="start_date"
                                 type="date"
@@ -1473,11 +1474,11 @@ const MyTreatments = () => {
                                 onChange={(e) =>
                                   setTreatmentForm({ ...treatmentForm, start_date: e.target.value })
                                 }
-                                className="h-11 sm:h-12 text-base"
+                                className="h-11 sm:h-12 text-base mobile-text-fix"
                               />
                             </div>
                             <div>
-                              <Label htmlFor="end_date" className="text-sm font-medium block mb-2">End Date</Label>
+                              <Label htmlFor="end_date" className="text-sm font-medium block mb-2 mobile-text-fix">End Date</Label>
                               <Input
                                 id="end_date"
                                 type="date"
@@ -1485,12 +1486,12 @@ const MyTreatments = () => {
                                 onChange={(e) =>
                                   setTreatmentForm({ ...treatmentForm, end_date: e.target.value })
                                 }
-                                className="h-11 sm:h-12 text-base"
+                                className="h-11 sm:h-12 text-base mobile-text-fix"
                               />
                             </div>
                           </div>
                           <div>
-                            <Label htmlFor="status" className="text-sm font-medium block mb-2">Status *</Label>
+                            <Label htmlFor="status" className="text-sm font-medium block mb-2 mobile-text-fix">Status *</Label>
                             <Select
                               value={treatmentForm.status}
                               onValueChange={(value: string) =>
@@ -1500,7 +1501,7 @@ const MyTreatments = () => {
                                 })
                               }
                             >
-                              <SelectTrigger id="status" className="h-11 sm:h-12 text-base">
+                              <SelectTrigger id="status" className="h-11 sm:h-12 text-base mobile-text-fix">
                                 <SelectValue />
                               </SelectTrigger>
                               <SelectContent>
@@ -1509,7 +1510,7 @@ const MyTreatments = () => {
                               </SelectContent>
                             </Select>
                           </div>
-                          <Button onClick={handleAddTreatment} disabled={loading} className="w-full h-11 sm:h-12 text-base font-medium mt-4 sm:mt-5 gap-2">
+                          <Button onClick={handleAddTreatment} disabled={loading} className="w-full h-11 sm:h-12 text-base font-medium mt-4 sm:mt-5 gap-2 mobile-text-fix">
                             {loading ? (
                               <Loader2 className="w-4 h-4 animate-spin" />
                             ) : (
