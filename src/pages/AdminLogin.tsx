@@ -164,7 +164,7 @@ const AdminLogin = () => {
               </CardDescription>
             </CardHeader>
             <CardContent className="p-4 sm:p-6">
-              <form onSubmit={handleAdminLogin} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleAdminLogin} className="space-y-5">
                 {/* Error Alert */}
                 {error && (
                   <Alert variant="destructive">
@@ -174,19 +174,19 @@ const AdminLogin = () => {
                 )}
 
                 {/* Email Field */}
-                <div className="space-y-1.5 sm:space-y-2">
-                  <Label htmlFor="email" className="text-xs sm:text-sm font-medium">
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-medium">
                     Email Address
                   </Label>
-                  <div className="relative flex items-center">
-                    <Mail className="absolute left-3 w-3 sm:w-4 h-3 sm:h-4 text-foreground/70 pointer-events-none" />
+                  <div className="relative">
+                    <Mail className="input-icon" />
                     <Input
                       id="email"
                       type="email"
                       placeholder="admin@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="pl-9 sm:pl-10 pr-4 h-9 sm:h-10 text-xs sm:text-sm"
+                      className="input-with-icon h-12 text-base"
                       required
                       disabled={loading}
                     />
@@ -194,19 +194,19 @@ const AdminLogin = () => {
                 </div>
 
                 {/* Password Field */}
-                <div className="space-y-1.5 sm:space-y-2">
-                  <Label htmlFor="password" className="text-xs sm:text-sm font-medium">
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-sm font-medium">
                     Password
                   </Label>
-                  <div className="relative flex items-center">
-                    <Lock className="absolute left-3 w-3 sm:w-4 h-3 sm:h-4 text-foreground/70 pointer-events-none" />
+                  <div className="relative">
+                    <Lock className="input-icon" />
                     <Input
                       id="password"
                       type="password"
                       placeholder="••••••••"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="pl-9 sm:pl-10 pr-4 h-9 sm:h-10 text-xs sm:text-sm"
+                      className="input-with-icon h-12 text-base"
                       required
                       disabled={loading}
                     />
@@ -216,7 +216,7 @@ const AdminLogin = () => {
                 {/* Login Button */}
                 <Button
                   type="submit"
-                  className="w-full h-9 sm:h-10 text-sm sm:text-base"
+                  className="w-full h-12 text-base font-medium mt-6"
                   disabled={loading}
                 >
                   {loading ? (

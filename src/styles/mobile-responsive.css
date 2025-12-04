@@ -406,6 +406,38 @@ textarea:focus-visible {
   margin-top: 1rem;
 }
 
+/* Dashboard Progress Circle Mobile Optimization */
+@media (max-width: 768px) {
+  /* Progress circle container */
+  .progress-circle-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Progress text improvements */
+  .progress-percentage {
+    font-size: 2rem !important;
+    font-weight: 700;
+    line-height: 1;
+  }
+  
+  .progress-title {
+    font-size: 1.125rem !important;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .progress-subtitle {
+    font-size: 0.875rem !important;
+    line-height: 1.4;
+  }
+  
+  /* Progress bar mobile styling */
+  .progress-bar-mobile {
+    height: 0.75rem !important;
+    border-radius: 9999px;
+  }
+}
+
 /* ========================================
    MOBILE ACCESSIBILITY ENHANCEMENTS
    ======================================== */

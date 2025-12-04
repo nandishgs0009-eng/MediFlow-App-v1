@@ -40,6 +40,7 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
 import {
   AreaChart,
@@ -59,7 +60,8 @@ const Dashboard = () => {
   const { toast } = useToast();
   const { profile, user, signOut } = useAuth();
   const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const isMobile = useIsMobile();
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     totalTreatments: 0,
@@ -1054,8 +1056,8 @@ const Dashboard = () => {
                 {/* Progress Card */}
                 <Card variant="glass" className="p-4 sm:p-5 lg:p-6">
                   <div className="text-center mb-4 sm:mb-5 lg:mb-6">
-                    <div className="relative inline-flex items-center justify-center">
-                      <svg className="w-24 sm:w-28 lg:w-32 h-24 sm:h-28 lg:h-32 transform -rotate-90">
+                    <div className="relative inline-flex items-center justify-center mb-4">
+                      <svg className="w-32 sm:w-28 lg:w-32 h-32 sm:h-28 lg:h-32 transform -rotate-90">
                         <circle
                           cx="64"
                           cy="64"
@@ -1077,17 +1079,22 @@ const Dashboard = () => {
                         />
                       </svg>
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-2xl sm:text-3xl lg:text-4xl font-bold">
+                        <span className="text-3xl sm:text-3xl lg:text-4xl font-bold text-primary">
                           {stats.totalMedicines > 0 ? Math.round((stats.takenToday / stats.totalMedicines) * 100) : 0}%
                         </span>
                       </div>
                     </div>
-                    <p className="text-base sm:text-lg font-semibold mt-3 sm:mt-4">Today's Progress</p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">
-                      {stats.takenToday} of {stats.totalMedicines} medications taken
-                    </p>
+                    <div className="space-y-2">
+                      <p className="text-lg sm:text-lg lg:text-xl font-semibold">Today's Progress</p>
+                      <p className="text-sm sm:text-sm lg:text-base text-muted-foreground">
+                        {stats.takenToday} of {stats.totalMedicines} medications taken
+                      </p>
+                    </div>
                   </div>
-                  <Progress value={stats.totalMedicines > 0 ? (stats.takenToday / stats.totalMedicines) * 100 : 0} className="h-2" />
+                  <Progress 
+                    value={stats.totalMedicines > 0 ? (stats.takenToday / stats.totalMedicines) * 100 : 0} 
+                    className="h-3 sm:h-2 lg:h-3 rounded-full" 
+                  />
                 </Card>
 
             {/* Notifications */}
