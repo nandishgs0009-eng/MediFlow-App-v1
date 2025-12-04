@@ -32,6 +32,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/hooks/use-toast";
+import "@/styles/mobile-responsive.css";
 
 interface MedicalRecord {
   id: string;
@@ -357,12 +358,12 @@ const MedicalRecords = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-3 sm:p-4 md:p-6 lg:p-8">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8 mobile-content mobile-text-container">
           <div className="space-y-6">
             {/* Filters */}
             <Card>
               <CardHeader>
-                <CardTitle>Filters</CardTitle>
+                <CardTitle className="mobile-header">Filters</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
@@ -410,12 +411,12 @@ const MedicalRecords = () => {
 
             {/* Medical Records List */}
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center gap-2 mobile-header">
                   <FileText className="w-5 h-5 text-primary" />
-                  Your Medical Records
+                  <span className="mobile-text-fix">Your Medical Records</span>
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="mobile-text-fix">
                   A complete history of your medical documents and reports
                 </CardDescription>
               </CardHeader>
