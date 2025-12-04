@@ -1284,7 +1284,7 @@ const MyTreatments = () => {
                                         <SelectTrigger id="med-frequency" className="h-11 sm:h-12 text-base mobile-text-fix">
                                           <SelectValue placeholder="Select frequency" />
                                         </SelectTrigger>
-                                        <SelectContent>
+                                        <SelectContent className="z-[99999]" position="popper" sideOffset={5}>
                                           <SelectItem value="Once daily">Once daily</SelectItem>
                                           <SelectItem value="Twice daily">Twice daily</SelectItem>
                                           <SelectItem value="Three times daily">Three times daily</SelectItem>
@@ -1360,7 +1360,7 @@ const MyTreatments = () => {
                                         <SelectTrigger id="med-instructions" className="h-11 sm:h-12 text-base mobile-text-fix">
                                           <SelectValue placeholder="Select" />
                                         </SelectTrigger>
-                                        <SelectContent>
+                                        <SelectContent className="z-[99999]" position="popper" sideOffset={5}>
                                           <SelectItem value="Before food">Before food</SelectItem>
                                           <SelectItem value="After food">After food</SelectItem>
                                           <SelectItem value="Afternoon">Afternoon</SelectItem>
