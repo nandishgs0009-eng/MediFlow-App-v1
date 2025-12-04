@@ -413,7 +413,6 @@ const History = () => {
               </div>
             </div>
           </div>
-          </div>
         </nav>
 
         {/* Content */}
