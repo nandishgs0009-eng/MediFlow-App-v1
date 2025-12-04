@@ -358,14 +358,14 @@ const MedicalRecords = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-3 sm:p-4 md:p-6 lg:p-8 mobile-content mobile-text-container">
-          <div className="space-y-6">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8 mobile-content mobile-text-container max-w-full overflow-hidden">
+          <div className="space-y-6 max-w-full">
             {/* Filters */}
-            <Card>
+            <Card className="w-full max-w-full overflow-hidden">
               <CardHeader>
                 <CardTitle className="mobile-header">Filters</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 max-w-full overflow-hidden">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className="text-sm font-semibold mb-2 block mobile-text-fix">
@@ -410,7 +410,7 @@ const MedicalRecords = () => {
             </Card>
 
             {/* Medical Records List */}
-            <Card>
+            <Card className="w-full max-w-full overflow-hidden">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 mobile-header">
                   <FileText className="w-5 h-5 text-primary" />
@@ -420,7 +420,7 @@ const MedicalRecords = () => {
                   A complete history of your medical documents and reports
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="max-w-full overflow-hidden">
                 {filteredRecords.length === 0 ? (
                   <div className="text-center py-12">
                     <FileText className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
@@ -433,11 +433,11 @@ const MedicalRecords = () => {
                     </Button>
                   </div>
                 ) : (
-                  <div className="space-y-3">
+                  <div className="space-y-3 max-w-full">
                     {filteredRecords.map((record) => (
                       <div
                         key={record.id}
-                        className="p-4 rounded-lg border border-border/50 hover:bg-secondary/30 transition-colors mobile-card-spacing"
+                        className="p-3 sm:p-4 rounded-lg border border-border/50 hover:bg-secondary/30 transition-colors mobile-card-spacing w-full max-w-full overflow-hidden"
                       >
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0 mt-1">
@@ -487,44 +487,24 @@ const MedicalRecords = () => {
             </Card>
 
             {/* Record Statistics */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-              <Card className="mobile-card-spacing">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-full overflow-hidden">
+              <Card className="mobile-card-spacing w-full max-w-full overflow-hidden">
                 <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary mb-1 sm:mb-2 mobile-header">
+                    <p className="text-lg sm:text-xl lg:text-2xl font-bold text-primary mb-1 mobile-header">
                       {records.length}
                     </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground mobile-text-fix">Total Records</p>
+                    <p className="text-xs text-muted-foreground mobile-text-fix truncate">Total</p>
                   </div>
                 </CardContent>
               </Card>
-              <Card className="mobile-card-spacing">
+              <Card className="mobile-card-spacing w-full max-w-full overflow-hidden">
                 <CardContent className="p-3 sm:p-4 lg:p-6">
                   <div className="text-center">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-500 mb-1 sm:mb-2 mobile-header">
+                    <p className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-500 mb-1 mobile-header">
                       {records.filter((r) => r.type === "lab_report").length}
                     </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground mobile-text-fix">Lab Reports</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="mobile-card-spacing">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="text-center">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-purple-500 mb-1 sm:mb-2 mobile-header">
-                      {records.filter((r) => r.type === "scan").length}
-                    </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground mobile-text-fix">Scans</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="mobile-card-spacing">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="text-center">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-500 mb-1 sm:mb-2 mobile-header">
-                      {records.filter((r) => r.type === "prescription").length}
-                    </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground mobile-text-fix">Prescriptions</p>
+                    <p className="text-xs text-muted-foreground mobile-text-fix truncate">Lab Reports</p>
                   </div>
                 </CardContent>
               </Card>

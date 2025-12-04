@@ -663,6 +663,8 @@ textarea:focus-visible {
   .mobile-card-spacing {
     margin: 0.5rem;
     padding: 1rem;
+    max-width: 100%;
+    overflow: hidden;
   }
   
   /* Prevent text truncation */
@@ -678,6 +680,35 @@ textarea:focus-visible {
     line-height: 1.5;
     white-space: normal;
     word-wrap: break-word;
+  }
+
+  /* Prevent card overflow */
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+
+  /* Fix content containers */
+  .mobile-content {
+    width: 100%;
+    max-width: 100vw;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  /* Fix grid layouts */
+  .grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+
+  .grid > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
   }
 }
 
