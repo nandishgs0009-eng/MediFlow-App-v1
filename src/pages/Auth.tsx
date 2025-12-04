@@ -139,13 +139,13 @@ const Auth = () => {
             {isSignup ? (
               <form onSubmit={signupForm.handleSubmit(handleSignup)} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="fullName">Full Name</Label>
-                  <div className="relative flex items-center">
-                    <User className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
+                  <Label htmlFor="fullName" className="text-sm font-medium">Full Name</Label>
+                  <div className="relative">
+                    <User className="input-icon" />
                     <Input
                       id="fullName"
                       placeholder="John Doe"
-                      className="pl-10 pr-4"
+                      className="input-with-icon h-12 text-base"
                       {...signupForm.register("fullName")}
                     />
                   </div>
@@ -154,14 +154,14 @@ const Auth = () => {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <div className="relative flex items-center">
-                    <Mail className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
+                  <Label htmlFor="email" className="text-sm font-medium">Email</Label>
+                  <div className="relative">
+                    <Mail className="input-icon" />
                     <Input
                       id="email"
                       type="email"
                       placeholder="you@example.com"
-                      className="pl-10 pr-4"
+                      className="input-with-icon h-12 text-base"
                       {...signupForm.register("email")}
                     />
                   </div>
@@ -170,14 +170,14 @@ const Auth = () => {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
-                  <div className="relative flex items-center">
-                    <Lock className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
+                  <Label htmlFor="password" className="text-sm font-medium">Password</Label>
+                  <div className="relative">
+                    <Lock className="input-icon" />
                     <Input
                       id="password"
                       type="password"
                       placeholder="••••••••"
-                      className="pl-10 pr-4"
+                      className="input-with-icon h-12 text-base"
                       {...signupForm.register("password")}
                     />
                   </div>
@@ -186,14 +186,14 @@ const Auth = () => {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
-                  <div className="relative flex items-center">
-                    <Lock className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
+                  <Label htmlFor="confirmPassword" className="text-sm font-medium">Confirm Password</Label>
+                  <div className="relative">
+                    <Lock className="input-icon" />
                     <Input
                       id="confirmPassword"
                       type="password"
                       placeholder="••••••••"
-                      className="pl-10 pr-4"
+                      className="input-with-icon h-12 text-base"
                       {...signupForm.register("confirmPassword")}
                     />
                   </div>
@@ -201,7 +201,7 @@ const Auth = () => {
                     <p className="text-sm text-destructive">{signupForm.formState.errors.confirmPassword.message}</p>
                   )}
                 </div>
-                <Button type="submit" variant="hero" className="w-full" disabled={isLoading}>
+                <Button type="submit" variant="hero" className="w-full h-12 text-base font-medium mt-6" disabled={isLoading}>
                   {isLoading ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -215,14 +215,14 @@ const Auth = () => {
             ) : (
               <form onSubmit={loginForm.handleSubmit(handleLogin)} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <div className="relative flex items-center">
-                    <Mail className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
+                  <Label htmlFor="email" className="text-sm font-medium">Email</Label>
+                  <div className="relative">
+                    <Mail className="input-icon" />
                     <Input
                       id="email"
                       type="email"
                       placeholder="you@example.com"
-                      className="pl-10 pr-4"
+                      className="input-with-icon h-12 text-base"
                       {...loginForm.register("email")}
                     />
                   </div>
@@ -231,14 +231,14 @@ const Auth = () => {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
-                  <div className="relative flex items-center">
-                    <Lock className="absolute left-3 w-4 h-4 text-foreground/70 pointer-events-none" />
+                  <Label htmlFor="password" className="text-sm font-medium">Password</Label>
+                  <div className="relative">
+                    <Lock className="input-icon" />
                     <Input
                       id="password"
                       type="password"
                       placeholder="••••••••"
-                      className="pl-10 pr-4"
+                      className="input-with-icon h-12 text-base"
                       {...loginForm.register("password")}
                     />
                   </div>
@@ -246,7 +246,7 @@ const Auth = () => {
                     <p className="text-sm text-destructive">{loginForm.formState.errors.password.message}</p>
                   )}
                 </div>
-                <Button type="submit" variant="hero" className="w-full" disabled={isLoading}>
+                <Button type="submit" variant="hero" className="w-full h-12 text-base font-medium mt-6" disabled={isLoading}>
                   {isLoading ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
