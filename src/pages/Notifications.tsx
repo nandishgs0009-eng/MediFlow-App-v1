@@ -163,7 +163,7 @@ const Notifications = () => {
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-20"
-        } bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen`}
+        } ${isMobile && !sidebarOpen ? '-translate-x-full' : ''} bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen z-40`}
       >
         {/* Logo */}
         <div className="p-6 border-b border-border/50 flex items-center justify-between">

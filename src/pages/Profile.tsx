@@ -286,7 +286,7 @@ const Profile = () => {
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-20"
-        } bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen`}
+        } ${isMobile && !sidebarOpen ? '-translate-x-full' : ''} bg-card border-r border-border/50 transition-all duration-300 flex flex-col fixed left-0 top-0 h-screen z-40`}
       >
         {/* Logo */}
         <div className="p-6 border-b border-border/50 flex items-center justify-between">
@@ -458,7 +458,7 @@ const Profile = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-3 sm:p-4 md:p-6 lg:p-8">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8 mobile-content mobile-text-container">
           {isEditing ? (
             // Edit Mode
             <div className="space-y-6">
@@ -469,7 +469,7 @@ const Profile = () => {
                     <User className="w-5 h-5 text-primary" />
                     Personal Information
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="mobile-text-fix">
                     Update your basic personal details
                   </CardDescription>
                 </CardHeader>

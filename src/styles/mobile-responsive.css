@@ -463,6 +463,86 @@ textarea:focus-visible {
 }
 
 /* ========================================
+   MOBILE LAYOUT FIXES
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Fix text truncation and display issues */
+  .mobile-text-fix {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Ensure proper spacing for mobile cards */
+  .mobile-card {
+    margin: 0.75rem;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  
+  /* Fix mobile sidebar positioning */
+  .mobile-sidebar-hidden {
+    transform: translateX(-100%);
+  }
+  
+  /* Better mobile content spacing */
+  .mobile-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Fix mobile text overflow */
+  .mobile-text-container {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .mobile-text-container h1,
+  .mobile-text-container h2,
+  .mobile-text-container h3,
+  .mobile-text-container p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  
+  /* Emergency contact and other long text fixes */
+  .mobile-emergency-contact,
+  .mobile-feature-text {
+    font-size: 0.875rem;
+    line-height: 1.3;
+    word-break: break-word;
+    white-space: normal;
+  }
+  
+  /* Better mobile headers */
+  .mobile-header {
+    font-size: 1.125rem !important;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #f97316; /* Orange color like in screenshot */
+  }
+  
+  /* Mobile section spacing */
+  .mobile-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  
+  /* Fix mobile navigation text */
+  .mobile-nav-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* ========================================
    RESPONSIVE TABLES
    ======================================== */
 
@@ -540,5 +620,81 @@ textarea:focus-visible {
       --columns: 2;
       padding: 1rem;
     }
+  }
+}
+
+/* ========================================
+   MOBILE LAYOUT DISPLAY FIXES
+   ======================================== */
+
+/* Mobile content containers */
+.mobile-content {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Text container improvements */
+.mobile-text-container {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Mobile header fixes */
+.mobile-header {
+  font-size: clamp(1.25rem, 4vw, 1.5rem) !important;
+  line-height: 1.3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Mobile text display fixes */
+.mobile-text-fix {
+  font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Mobile card spacing */
+@media (max-width: 768px) {
+  .mobile-card-spacing {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  /* Prevent text truncation */
+  .truncate {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+  
+  /* Emergency contact text specifically */
+  .emergency-contact-text {
+    font-size: 1rem !important;
+    line-height: 1.5;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+
+/* Profile page specific mobile fixes */
+@media (max-width: 768px) {
+  .profile-card {
+    margin-bottom: 1rem;
+  }
+  
+  .profile-card .card-title {
+    font-size: 1.125rem !important;
+    line-height: 1.4;
+  }
+  
+  .profile-card .card-description {
+    font-size: 0.9rem !important;
+    line-height: 1.5;
+    margin-top: 0.25rem;
   }
 }
