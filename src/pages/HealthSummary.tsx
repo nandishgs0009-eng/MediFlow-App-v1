@@ -26,6 +26,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
 import {
   LineChart,
@@ -54,8 +55,9 @@ interface HealthMetric {
 const HealthSummary = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [healthMetrics, setHealthMetrics] = useState<HealthMetric[]>([]);
@@ -400,20 +402,30 @@ const HealthSummary = () => {
 
       {/* Main Content */}
       <main
-        className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
+        className={`flex-1 ${isMobile ? 'ml-0' : sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
         <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold">Health Summary</h2>
-            <p className="text-xs sm:text-sm text-muted-foreground">
-              Your overall health and medication adherence report
-            </p>
+          <div className="flex items-center gap-2 min-w-0">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className={`${isMobile ? 'flex' : 'md:hidden'} flex-shrink-0`}
+            >
+              {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </Button>
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold truncate">Health Summary</h2>
+              <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
+                Your overall health and medication adherence report
+              </p>
+            </div>
           </div>
         </nav>
 
         {/* Content */}
-        <div className="p-4 sm:p-6 md:p-8">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8">
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <p className="text-muted-foreground">Loading health summary...</p>

@@ -33,6 +33,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -63,8 +64,9 @@ const Profile = () => {
   const { user, signOut, profile } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -422,15 +424,25 @@ const Profile = () => {
 
       {/* Main Content */}
       <main
-        className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
+        className={`flex-1 ${isMobile ? 'ml-0' : sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
-        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-8 py-4 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold">Patient Profile</h2>
-            <p className="text-sm text-muted-foreground">
-              Manage your personal and medical information
-            </p>
+        <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2 min-w-0">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className={`${isMobile ? 'flex' : 'md:hidden'} flex-shrink-0`}
+            >
+              {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </Button>
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold truncate">Patient Profile</h2>
+              <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
+                Manage your personal and medical information
+              </p>
+            </div>
           </div>
           {!isEditing && (
             <Button
@@ -446,7 +458,7 @@ const Profile = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8">
           {isEditing ? (
             // Edit Mode
             <div className="space-y-6">

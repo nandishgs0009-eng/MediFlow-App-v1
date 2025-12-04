@@ -30,6 +30,7 @@ import {
   Filter,
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/hooks/use-toast";
 
 interface MedicalRecord {
@@ -47,8 +48,9 @@ const MedicalRecords = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const isMobile = useIsMobile();
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   // Mock medical records
@@ -327,15 +329,25 @@ const MedicalRecords = () => {
 
       {/* Main Content */}
       <main
-        className={`flex-1 ${sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
+        className={`flex-1 ${isMobile ? 'ml-0' : sidebarOpen ? "ml-64" : "ml-20"} transition-all duration-300`}
       >
         {/* Top Bar */}
         <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border/50 px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
-          <div className="min-w-0">
-            <h2 className="text-xl sm:text-2xl font-bold truncate">Medical Records</h2>
-            <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">
-              View and manage your medical documents and reports
-            </p>
+          <div className="flex items-center gap-2 min-w-0">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className={`${isMobile ? 'flex' : 'md:hidden'} flex-shrink-0`}
+            >
+              {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </Button>
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold truncate">Medical Records</h2>
+              <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1 hidden sm:block">
+                View and manage your medical documents and reports
+              </p>
+            </div>
           </div>
           <Button onClick={handleUpload} className="gap-1 sm:gap-2 text-xs sm:text-sm whitespace-nowrap">
             <Upload className="w-3 sm:w-4 h-3 sm:h-4" />
@@ -345,7 +357,7 @@ const MedicalRecords = () => {
         </nav>
 
         {/* Content */}
-        <div className="p-4 sm:p-6 md:p-8">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8">
           <div className="space-y-6">
             {/* Filters */}
             <Card>
